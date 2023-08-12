@@ -1,0 +1,28 @@
+body {
+    font-family: 'Roboto';
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameboard {
+    border: 1px solid black;
+    gap: 1px;
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    
+
+}
+#cell {
+    /*outline: 1.5px solid black;*/
+    background-color: white;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    
+}
