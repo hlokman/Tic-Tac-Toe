@@ -30,16 +30,21 @@ const gameFlow = (() => {
     //console.log(players[0]);
     let activePlayer = players[0];
 
-    board.addEventListener('click', (e) => {
+    /*board.addEventListener('click', (e) => {
         activePlayer = activePlayer == players[0] ? players[1] : players[0];
         console.log(activePlayer);
-    }); // !!!!!!
+    }); // !!!!!!*/
+
+    const round = () => {
+        activePlayer = activePlayer == players[0] ? players[1] : players[0];
+    };
 
     let getActivePlayer = () => activePlayer;
     
 
     return {
-        getActivePlayer
+        getActivePlayer,
+        round
     };
 })();
 
@@ -57,7 +62,7 @@ const displayController = (() => {
         })
     };
 
-    //screenUpdate(); !!!
+    screenUpdate(); 
 
 
 
@@ -73,7 +78,10 @@ const displayController = (() => {
         if (gameBoard.getArray()[e.target.dataset.indexNumber] == undefined && e.target.id == 'cell') {
             gameBoard.getArray()[e.target.dataset.indexNumber] = gameFlow.getActivePlayer().marker;
             console.log(gameBoard.getArray());
-            e.target.innerText = gameFlow.getActivePlayer().marker;
+            //e.target.innerText = gameFlow.getActivePlayer().marker;
+            gameFlow.round();
+            screenUpdate()
+
         }
         });
     return {};
