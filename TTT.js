@@ -1,14 +1,16 @@
 //const array = ['X'];
 //gameBoard.array[6] = 'O';
 const board = document.querySelector('#gameboard');
+const subBoard = document.querySelectorAll('#cell');
 //const array = [];
 
 //--------------------CREATE PLAYERS----------------------------
 const player = (name, marker) => {
     return {name, marker};
 };
-const playerOne = player('One', 'X');
-const playerTwo = player('Two', 'O');
+const playerOne = player('Player One', 'X');
+const playerTwo = player('Player Two', 'O');
+const players = [playerOne, playerTwo];
 
 
 
@@ -25,33 +27,65 @@ const gameBoard = (() => {
 
 //-------------------GAME FLOW--------------------------------
 const gameFlow = (() => {
+    //console.log(players[0]);
+    let activePlayer = players[0];
 
+    board.addEventListener('click', (e) => {
+        activePlayer = activePlayer == players[0] ? players[1] : players[0];
+        console.log(activePlayer);
+    }); // !!!!!!
+
+    let getActivePlayer = () => activePlayer;
+    
 
     return {
-
+        getActivePlayer
     };
 })();
 
 
 //----------------DISPLAY CONTROLLER---------------------------
 const displayController = (() => {
+    const screenUpdate = () => {
+        gameBoard.getArray().forEach((item, index) => {
+            for (let i = 0; i <= 8; i++) {
+                //console.log(subBoard[i].attributes[1].value)
+                if (subBoard[i].attributes[1].value == index) {
+                    subBoard[i].innerText = item;
+                }
+            }
+        })
+    };
+
+    //screenUpdate(); !!!
+
+
+
+
+
     //const board = gameBoard;
     //console.log(board.getArray())
-
     board.addEventListener('click', (e) => {
         console.log(e.target.dataset.indexNumber);
         //console.log(gameBoard.array[e.target.dataset.indexNumber]);
         //Change gameBoard.getArray() to board.getArray() 
         // ==> module was used to create gameBoard, so ne need to simplify gameBoard to board?
-        if (gameBoard.getArray()[e.target.dataset.indexNumber] == undefined) {
-            gameBoard.getArray()[e.target.dataset.indexNumber] = 'X';
-            console.log(gameBoard.getArray())
-            e.target.textContent = 'X'
+        if (gameBoard.getArray()[e.target.dataset.indexNumber] == undefined && e.target.id == 'cell') {
+            gameBoard.getArray()[e.target.dataset.indexNumber] = gameFlow.getActivePlayer().marker;
+            console.log(gameBoard.getArray());
+            e.target.innerText = gameFlow.getActivePlayer().marker;
         }
         });
     return {};
     // We don't need to return anything from this module because everything is encapsulated inside this screen controller.
 })();
+
+
+
+
+
+
+
 
 
 
