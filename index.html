@@ -9,7 +9,18 @@
     <body>
         <div id="container">
             <h1 class="title">Tic-Tac-Toe</h1>
-            <div class="results"></div>
+            <div id="players">
+                <div class="player">
+                    <img src="./images/son-goku.svg" alt="">
+                    <div class="player1"></div>
+                </div>
+                <div class="results"></div>
+                <div class="player">
+                    <img src="./images/icons8-maggie-simpson.svg" alt="">
+                    <div class="player2"></div>
+                </div>
+            </div>
+            
             <div id="gameboard">
                 <button id="cell" data-index-number="0"></button>
                 <button id="cell" data-index-number="1"></button>
@@ -20,6 +31,11 @@
                 <button id="cell" data-index-number="6"></button>
                 <button id="cell" data-index-number="7"></button>
                 <button id="cell" data-index-number="8"></button>
+            </div>
+
+            <div id="buttons">
+                <button class="restart">Restart</button>
+                <button class="names">Change names</button>
             </div>
             <!--<div class="test"></div>-->
         </div>
