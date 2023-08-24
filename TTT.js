@@ -139,26 +139,3 @@ const displayController = (() => {
 
 
 
-
-
-
-
-
-
-
-//gameboard as an array inside of a Gameboard object
-//if you only ever need ONE of something (gameBoard, displayController), use a module. If you need multiples of something (players!), create them with factories.
-//module called ScreenController. This module will leverage an updateScreen pattern
-
-
-
-//const test = document.querySelector('.test');
-//displayController.display(array)
-/*function display(array) {
-    return test.textContent = array;
-}; 
-display(array)*/
-
-
-
-
